@@ -1,0 +1,34 @@
+-------------------------------------------------------------------------------
+Project 2 - FAT Filesystem (Team lopezDelgado)
+-------------------------------------------------------------------------------
+Version 1.0
+Release date: 3/14/2013
+-------------------------------------------------------------------------------
+Project state:
+Stable (ish)
+-------------------------------------------------------------------------------
+Credits
+	Luis Lopez (lopez-archetti.l@husky.neu.edu)
+	Jorge Delgado (delgado.j@husky.neu.edu)
+-------------------------------------------------------------------------------
+Project description
+ This is a simple FAT file system. It supports subdirectories. It uses FUSE for its implementation.
+-------------------------------------------------------------------------------
+Documentation
+
+Primarily, we ran into issues with strcmp, we had some trouble figuring out that it returns 0 if there is a match. Once we figured this out we were able to codet the getattr functions. 
+We also decided that for optimiazation, we wo uld create a global array of structures. Instead of having to do disk reads and disk writes for everything, information is synced between the structures and the disk. 
+This enables us to have a much faster file system because disk reads are FAR for expensive than memoery reads. Thanks to an array of structures, this is possible.
+It was tricky doing the FAT (as opposed to dirent) but we used the same formula for FAT  that we did for the dirents which made  it easy. Having a solid, clear foundation for dirents made this a lot easier.
+Lastly, the sub directories were a bit tricky, we had to do a bit of pasring to get this to work. Once we got that done, it wasn't too hard.
+
+
+-------------------------------------------------------------------------------
+Installation instructions
+
+With GCC installed on the system, just do make clean and then make. IThen do ./3600mkfs <size> to format the disk and have fun with ./3600fs. 
+
+-------------------------------------------------------------------------------
+Additional Notes
+
+We left a few debuf fprint statements, this is sincase we want to continue expanding the file system.
